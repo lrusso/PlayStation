@@ -12,7 +12,7 @@ https://lrusso.github.io/PlayStation/PlayStation.htm
 
 * Sound working.
 * Mute/unmute implementation.
-* The rendering now fills the entire window.
+* The rendering fills the entire window.
 * File format validation.
 * Improved main screen.
 * Icons added for all the available options.
