@@ -10,10 +10,11 @@ https://lrusso.github.io/PlayStation/PlayStation.htm
 
 ## Main differences with WasmPSX:
 
-* Improved UI.
-* File format validation.
+* Sound working.
 * Mute/unmute implementation.
 * The emulation now fills the entire window.
+* File format validation.
+* Improved UI.
 
 ## Based on the work of:
 
