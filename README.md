@@ -14,7 +14,8 @@ https://lrusso.github.io/PlayStation/PlayStation.htm
 * Mute/unmute implementation.
 * The emulation now fills the entire window.
 * File format validation.
-* Improved UI.
+* Improved main screen.
+* Icons added for all the available options.
 * Internationalization (English and Spanish).
 
 ## Based on the work of:
