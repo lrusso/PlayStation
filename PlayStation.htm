@@ -56,184 +56,242 @@
 		</style>
 	</head>
 	<body class="body">
-		<div class="wrapper">
-			<iframe id="container" src="about:blank"></iframe>
-			<div class="gui_goback"></div>
-			<div class="gui_fullscreen"></div>
-			<div class="gui_sound_on" id="gui_sound_handler"></div>
-			<div class="gui_reload"></div>
-			<div class="gui_container">
-				<div class="gui_background"></div>
-				<div class="gui_controls"><span class="gui_controls_key">SELECT = </span>C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">START = </span>V<br><span class="gui_controls_key">L1 = </span>W&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">L2 = </span>E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">R1 = </span>R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">R2 = </span>T<br><span class="gui_controls_key">TRIANGLE = </span>D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">CIRCLE = </span>X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">CROSS = </span>Z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">SQUARE = </span>S</div>
-				<div class="gui_email"><a href="mailto:info@lrusso.com">info@lrusso.com</a></div>
-				<div class="gui_upload"></div>
-				<input type="file" id="gui_controls_file" class="gui_controls_file" onchange="readFile(event.target.files);">
-			</div>
-			<script>
-				function getBooleanSetting(settingName){try{var name = "playStation" + settingName;var nameEQ = name + "=";var ca = document.cookie.split(";");for(var i=0;i < ca.length;i++){var c = ca[i];while (c.charAt(0)==" "){c = c.substring(1,c.length);}if (c.indexOf(nameEQ) == 0){if (c.substring(nameEQ.length,c.length)=="true"){return true;}else{return false;}}}}catch(err){}return true;}
-				function setBooleanSetting(settingName,settingValue){try{var name = "playStation" + settingName;var value = String(settingValue);var days = 999;var expires = "";if (days){var date = new Date();date.setTime(date.getTime() + (days*24*60*60*1000));expires = "; expires=" + date.toUTCString() + "; SameSite=Lax";}document.cookie = name + "=" + (value || "")  + expires + "; Secure; path=/";}catch(err){}}
-				function alertCustom(title,message,accept,callback){try{var alertButtonDelay = new Date().getTime();var alertContainer = document.createElement("div");alertContainer.className = "alert_confirm_input_custom";alertContainer.style.position = "fixed";alertContainer.style.top = 0;alertContainer.style.bottom = 0;alertContainer.style.left = 0;alertContainer.style.right = 0;alertContainer.style.zIndex = 999;alertContainer.style.backgroundColor = "rgba(0,0,0,0.5)";alertContainer.style.userSelect = "none";var alertForm = document.createElement("div");alertForm.style.position = "relative";alertForm.style.top = "50%";alertForm.style.left = 0;alertForm.style.right = 0;alertForm.style.marginLeft = "auto";alertForm.style.marginRight = "auto";alertForm.style.transform = "translateY(-50%)";alertForm.style.width = "300px";alertForm.style.backgroundColor = "#f2f2f2";alertForm.style.textAlign = "center";alertForm.style.borderRadius = "5px";alertForm.style.overflow = "hidden";alertForm.style.boxShadow = "0 2px 2px 1px rgba(0,0,0,0.4)";var alertTitle = document.createElement("div");alertTitle.style.textAlign = "left";alertTitle.style.paddingLeft = "10px";alertTitle.style.backgroundColor = "#3a76b1";alertTitle.style.fontFamily = "Arial";alertTitle.style.fontSize = "16px";alertTitle.style.fontWeight = "bold";alertTitle.style.color = "white";alertTitle.style.lineHeight = 2.5;alertTitle.innerHTML = title;alertTitle.style.cursor = "default";var alertMessage = document.createElement("div");alertMessage.style.padding = "20px";alertMessage.style.fontFamily = "Arial";alertMessage.style.fontSize = "16px";alertMessage.style.color = "black";alertMessage.style.textAlign = "center";alertMessage.style.lineHeight = 2;alertMessage.innerHTML = message;alertMessage.style.cursor = "default";var alertButton = document.createElement("input");alertButton.type = "submit";alertButton.style.outline = "none";alertButton.style.padding = "10px";alertButton.style.backgroundColor = "#d2d2d2";alertButton.style.border = "1px solid #b2b2b2";alertButton.style.fontFamily = "Arial";alertButton.style.fontSize = "16px";alertButton.style.color = "black";alertButton.style.textAlign = "center";alertButton.style.lineHeight = 1.5;alertButton.style.display = "inline-block";alertButton.style.marginBottom = "10px";alertButton.style.paddingLeft = "40px";alertButton.style.paddingRight = "40px";alertButton.style.cursor = "pointer";alertButton.style.borderRadius = "5px";alertButton.addEventListener("keydown",function(event){event.preventDefault()});alertButton.addEventListener("keyup",function(event){if (event.keyCode==13 && new Date().getTime()>alertButtonDelay+200){callback();document.body.removeChild(alertContainer)}});alertButton.addEventListener("click",function(event){callback();document.body.removeChild(alertContainer)});alertButton.value = accept;alertForm.appendChild(alertTitle);alertForm.appendChild(alertMessage);alertForm.appendChild(alertButton);alertContainer.appendChild(alertForm);document.body.appendChild(alertContainer);alertButton.focus()}catch(err){}}
+		<script>
+			function getBooleanSetting(settingName){try{var name = "playStation" + settingName;var nameEQ = name + "=";var ca = document.cookie.split(";");for(var i=0;i < ca.length;i++){var c = ca[i];while (c.charAt(0)==" "){c = c.substring(1,c.length);}if (c.indexOf(nameEQ) == 0){if (c.substring(nameEQ.length,c.length)=="true"){return true;}else{return false;}}}}catch(err){}return true;}
+			function setBooleanSetting(settingName,settingValue){try{var name = "playStation" + settingName;var value = String(settingValue);var days = 999;var expires = "";if (days){var date = new Date();date.setTime(date.getTime() + (days*24*60*60*1000));expires = "; expires=" + date.toUTCString() + "; SameSite=Lax";}document.cookie = name + "=" + (value || "")  + expires + "; Secure; path=/";}catch(err){}}
+			function alertCustom(title,message,accept,callback){try{var alertButtonDelay = new Date().getTime();var alertContainer = document.createElement("div");alertContainer.className = "alert_confirm_input_custom";alertContainer.style.position = "fixed";alertContainer.style.top = 0;alertContainer.style.bottom = 0;alertContainer.style.left = 0;alertContainer.style.right = 0;alertContainer.style.zIndex = 999;alertContainer.style.backgroundColor = "rgba(0,0,0,0.5)";alertContainer.style.userSelect = "none";var alertForm = document.createElement("div");alertForm.style.position = "relative";alertForm.style.top = "50%";alertForm.style.left = 0;alertForm.style.right = 0;alertForm.style.marginLeft = "auto";alertForm.style.marginRight = "auto";alertForm.style.transform = "translateY(-50%)";alertForm.style.width = "300px";alertForm.style.backgroundColor = "#f2f2f2";alertForm.style.textAlign = "center";alertForm.style.borderRadius = "5px";alertForm.style.overflow = "hidden";alertForm.style.boxShadow = "0 2px 2px 1px rgba(0,0,0,0.4)";var alertTitle = document.createElement("div");alertTitle.style.textAlign = "left";alertTitle.style.paddingLeft = "10px";alertTitle.style.backgroundColor = "#3a76b1";alertTitle.style.fontFamily = "Arial";alertTitle.style.fontSize = "16px";alertTitle.style.fontWeight = "bold";alertTitle.style.color = "white";alertTitle.style.lineHeight = 2.5;alertTitle.innerHTML = title;alertTitle.style.cursor = "default";var alertMessage = document.createElement("div");alertMessage.style.padding = "20px";alertMessage.style.fontFamily = "Arial";alertMessage.style.fontSize = "16px";alertMessage.style.color = "black";alertMessage.style.textAlign = "center";alertMessage.style.lineHeight = 2;alertMessage.innerHTML = message;alertMessage.style.cursor = "default";var alertButton = document.createElement("input");alertButton.type = "submit";alertButton.style.outline = "none";alertButton.style.padding = "10px";alertButton.style.backgroundColor = "#d2d2d2";alertButton.style.border = "1px solid #b2b2b2";alertButton.style.fontFamily = "Arial";alertButton.style.fontSize = "16px";alertButton.style.color = "black";alertButton.style.textAlign = "center";alertButton.style.lineHeight = 1.5;alertButton.style.display = "inline-block";alertButton.style.marginBottom = "10px";alertButton.style.paddingLeft = "40px";alertButton.style.paddingRight = "40px";alertButton.style.cursor = "pointer";alertButton.style.borderRadius = "5px";alertButton.addEventListener("keydown",function(event){event.preventDefault()});alertButton.addEventListener("keyup",function(event){if (event.keyCode==13 && new Date().getTime()>alertButtonDelay+200){callback();document.body.removeChild(alertContainer)}});alertButton.addEventListener("click",function(event){callback();document.body.removeChild(alertContainer)});alertButton.value = accept;alertForm.appendChild(alertTitle);alertForm.appendChild(alertMessage);alertForm.appendChild(alertButton);alertContainer.appendChild(alertForm);document.body.appendChild(alertContainer);alertButton.focus()}catch(err){}}
 
-				var GAME_SOUND_ENABLED = getBooleanSetting("GAME_SOUND_ENABLED");
+			var GAME_SOUND_ENABLED = getBooleanSetting("GAME_SOUND_ENABLED");
 
-				var ROMDATA = null;
-				var ROMNAME = null;
-				var MOVEMENTS_IDLE = 0;
+			var ROMDATA = null;
+			var ROMNAME = null;
+			var MOVEMENTS_IDLE = 0;
 
-				var userLanguage = window.navigator.userLanguage || window.navigator.language;
+			var userLanguage = window.navigator.userLanguage || window.navigator.language;
 
-				var STRING_SELECTGAME = "";
-				var STRING_GOBACK = "";
-				var STRING_FULLSCREEN = "";
-				var STRING_RELOAD = "";
-				var STRING_SOUND = "";
-				var STRING_ERROR_TITLE = "";
-				var STRING_ERROR_MESSAGE = "";
-				var STRING_ERROR_OK = "";
+			var STRING_SELECTGAME = "";
+			var STRING_GOBACK = "";
+			var STRING_FULLSCREEN = "";
+			var STRING_RELOAD = "";
+			var STRING_SOUND = "";
+			var STRING_ERROR_TITLE = "";
+			var STRING_ERROR_MESSAGE = "";
+			var STRING_ERROR_OK = "";
+			var STRING_TRIANGLE = "";
+			var STRING_CIRCLE = "";
+			var STRING_CROSS = "";
+			var STRING_SQUARE = "";
 
-				var SELECTED_FILE;
+			var SELECTED_FILE;
 
-				// CHECKING THE USER LANGUAGE
-				if (userLanguage.substring(0,2)=="es")
+			// CHECKING THE USER LANGUAGE
+			if (userLanguage.substring(0,2)=="es")
+				{
+				STRING_SELECTGAME = "Seleccionar juego";
+				STRING_GOBACK = "Volver al men" + String.fromCharCode(250) + " principal";
+				STRING_FULLSCREEN = "Pantalla completa";
+				STRING_RELOAD = "Recargar juego";
+				STRING_SOUND = "Sonido en el juego";
+				STRING_ERROR_TITLE = "MENSAJE";
+				STRING_ERROR_MESSAGE = "Por favor verifique que el juego se encuentre en formato BIN.";
+				STRING_ERROR_OK = "Aceptar";
+				STRING_TRIANGLE = "TRI&Aacute;NGULO";
+				STRING_CIRCLE = "C&Iacute;RCULO";
+				STRING_CROSS = "CRUZ";
+				STRING_SQUARE = "CUADRADO";
+				}
+				else
+				{
+				STRING_SELECTGAME = "Select game";
+				STRING_GOBACK = "Go back to the main menu";
+				STRING_FULLSCREEN = "Fullscreen";
+				STRING_RELOAD = "Reload game";
+				STRING_SOUND = "Game sound";
+				STRING_ERROR_TITLE = "MESSAGE";
+				STRING_ERROR_MESSAGE = "Please check that the game file<br>is in BIN format.";
+				STRING_ERROR_OK = "OK";
+				STRING_TRIANGLE = "TRIANGLE";
+				STRING_CIRCLE = "CIRCLE";
+				STRING_CROSS = "CROSS";
+				STRING_SQUARE = "SQUARE";
+				}
+
+			function runPlayStation()
+				{
+				try
 					{
-					STRING_SELECTGAME = "Seleccionar juego";
-					STRING_GOBACK = "Volver al men" + String.fromCharCode(250) + " principal";
-					STRING_FULLSCREEN = "Pantalla completa";
-					STRING_RELOAD = "Recargar juego";
-					STRING_SOUND = "Sonido en el juego";
-					STRING_ERROR_TITLE = "MENSAJE";
-					STRING_ERROR_MESSAGE = "Por favor verifique que el juego se encuentre en formato BIN.";
-					STRING_ERROR_OK = "Aceptar";
+					// HIDING THE GUI
+					document.getElementsByClassName("gui_container")[0].style.display = "none";
+
+					// DISPLAYING THE PLAYSTATION EMULATOR CONTAINER
+					document.getElementById("container").style.display = "block";
+					document.getElementById("container").focus();
+
+					// STARTING THE PLAYSTATION EMULATOR
+					document.getElementById("container").contentDocument.location.replace("PlayStationGame.htm");
 					}
-					else
+					catch(err)
 					{
-					STRING_SELECTGAME = "Select game";
-					STRING_GOBACK = "Go back to the main menu";
-					STRING_FULLSCREEN = "Fullscreen";
-					STRING_RELOAD = "Reload game";
-					STRING_SOUND = "Game sound";
-					STRING_ERROR_TITLE = "MESSAGE";
-					STRING_ERROR_MESSAGE = "Please check that the game file<br>is in BIN format.";
-					STRING_ERROR_OK = "OK";
 					}
+				}
 
-				function runPlayStation()
+			function getFile()
+				{
+				return SELECTED_FILE;
+				}
+
+			function readFile(files)
+				{
+				try
 					{
-					try
+					// GETTING THE FILE EXTENSION
+					var extension = files[0].name.split(".").pop().toLowerCase();
+
+					// CHECKING THE FILE EXTENSION
+					if (extension=="bin")
 						{
-						// HIDING THE GUI
-						document.getElementsByClassName("gui_container")[0].style.display = "none";
+						SELECTED_FILE = files[0];
 
-						// DISPLAYING THE PLAYSTATION EMULATOR CONTAINER
-						document.getElementById("container").style.display = "block";
-						document.getElementById("container").focus();
+						// RUNNING THE PLAYSTATION EMULATOR
+						runPlayStation();
 
-						// STARTING THE PLAYSTATION EMULATOR
-						document.getElementById("container").contentDocument.location.replace("PlayStationGame.htm");
+						// CLEARING THE SELECTED FILE VALUE
+						document.getElementById("gui_controls_file").value = null;
 						}
-						catch(err)
+						else
 						{
-						}
-					}
-
-				function getFile()
-					{
-					return SELECTED_FILE;
-					}
-
-				function readFile(files)
-					{
-					try
-						{
-						// GETTING THE FILE EXTENSION
-						var extension = files[0].name.split(".").pop().toLowerCase();
-
-						// CHECKING THE FILE EXTENSION
-						if (extension=="bin")
-							{
-							SELECTED_FILE = files[0];
-
-							// RUNNING THE PLAYSTATION EMULATOR
-							runPlayStation();
-
-							// CLEARING THE SELECTED FILE VALUE
-							document.getElementById("gui_controls_file").value = null;
-							}
-							else
-							{
-							// SHOWING AN ALERT MESSAGE WITH THE COMPATIBLE FILE FORMAT
-							alertCustom(STRING_ERROR_TITLE,STRING_ERROR_MESSAGE,STRING_ERROR_OK, function(){});
-							}
-						}
-						catch(err)
-						{
+						// SHOWING AN ALERT MESSAGE WITH THE COMPATIBLE FILE FORMAT
+						alertCustom(STRING_ERROR_TITLE,STRING_ERROR_MESSAGE,STRING_ERROR_OK, function(){});
 						}
 					}
-
-				function reloadGame()
+					catch(err)
 					{
-					try
-						{
-						// UNLOADING THE PLAYSTATION EMULATOR
-						document.getElementById("container").contentDocument.location.replace("about:blank");
+					}
+				}
 
-						// STARTING THE PLAYSTATION EMULATOR
-						document.getElementById("container").contentDocument.location.replace("PlayStationGame.htm");
-						}
-						catch(err)
+			function reloadGame()
+				{
+				try
+					{
+					// UNLOADING THE PLAYSTATION EMULATOR
+					document.getElementById("container").contentDocument.location.replace("about:blank");
+
+					// STARTING THE PLAYSTATION EMULATOR
+					document.getElementById("container").contentDocument.location.replace("PlayStationGame.htm");
+					}
+					catch(err)
+					{
+					}
+				}
+
+			function toggleSound()
+				{
+				try
+					{
+					// CHECKING IF THE SOUND IS ENABLED
+					if (GAME_SOUND_ENABLED==true)
 						{
+						// DISABLING THE SOUND
+						GAME_SOUND_ENABLED = false;
+
+						// SHOWING THE DISABLED SOUND ICON
+						document.getElementById("gui_sound_handler").className = "gui_sound_off";
+						}
+						else
+						{
+						// ENABLIND THE SOUND
+						GAME_SOUND_ENABLED = true;
+
+						// SHOWING THE ENABLED SOUND ICON
+						document.getElementById("gui_sound_handler").className = "gui_sound_on";
+						}
+
+					// SAVING THE USER PREFERENCE
+					setBooleanSetting("GAME_SOUND_ENABLED", GAME_SOUND_ENABLED);
+					}
+					catch(err)
+					{
+					}
+				}
+
+			function getSoundStatus()
+				{
+				return GAME_SOUND_ENABLED;
+				}
+
+			function goBack()
+				{
+				try
+					{
+					// CHECKING IF THE GAME IS RUNNING IN FULLSCREEN
+					if((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height))
+						{
+						// GOING BACK TO WINDOW MODE
+						document.exitFullscreen();
+						}
+
+					// SHOWING THE GUI
+					document.getElementsByClassName("gui_container")[0].style.display = "block";
+
+					// HIDING THE GO BACK BUTTON
+					document.getElementsByClassName("gui_goback")[0].style.display = "none";
+
+					// HIDING THE FULLSCREEN BUTTON
+					document.getElementsByClassName("gui_fullscreen")[0].style.display = "none";
+
+					// HIDING THE SOUND TOGGLE BUTTON
+					document.getElementById("gui_sound_handler").style.display = "none";
+
+					// HIDING THE RELOAD BUTTON
+					document.getElementsByClassName("gui_reload")[0].style.display = "none";
+
+					// UNLOADING THE PLAYSTATION EMULATOR
+					document.getElementById("container").style.display = "none";
+					document.getElementById("container").contentDocument.location.replace("about:blank");
+					}
+					catch(err)
+					{
+					}
+				}
+
+			function goBackButtonResetIncrement()
+				{
+				try
+					{
+					// CLEARING THE MOVEMENTS IDLE TIMER
+					MOVEMENTS_IDLE = 0;
+
+					// CHECKING IF A GAME IS RUNNING
+					if (document.getElementById("container").style.display=="block")
+						{
+						// SHOWING THE GO BACK BUTTON
+						document.getElementsByClassName("gui_goback")[0].style.display = "block";
+
+						// SHOWING THE FULLSCREEN BUTTON
+						document.getElementsByClassName("gui_fullscreen")[0].style.display = "block";
+
+						// SHOWING THE SOUND TOGGLE BUTTON
+						document.getElementById("gui_sound_handler").style.display = "block";
+
+						// SHOWING THE RELOAD BUTTON
+						document.getElementsByClassName("gui_reload")[0].style.display = "block";
 						}
 					}
-
-				function toggleSound()
+					catch(err)
 					{
-					try
-						{
-						// CHECKING IF THE SOUND IS ENABLED
-						if (GAME_SOUND_ENABLED==true)
-							{
-							// DISABLING THE SOUND
-							GAME_SOUND_ENABLED = false;
-
-							// SHOWING THE DISABLED SOUND ICON
-							document.getElementById("gui_sound_handler").className = "gui_sound_off";
-							}
-							else
-							{
-							// ENABLIND THE SOUND
-							GAME_SOUND_ENABLED = true;
-
-							// SHOWING THE ENABLED SOUND ICON
-							document.getElementById("gui_sound_handler").className = "gui_sound_on";
-							}
-
-						// SAVING THE USER PREFERENCE
-						setBooleanSetting("GAME_SOUND_ENABLED", GAME_SOUND_ENABLED);
-						}
-						catch(err)
-						{
-						}
 					}
+				}
 
-				function getSoundStatus()
+			function goBackButtonTimerIncrement()
+				{
+				try
 					{
-					return GAME_SOUND_ENABLED;
-					}
+					// UPDATING THE MOVEMENTS IDLE TIMER
+					MOVEMENTS_IDLE = MOVEMENTS_IDLE + 1;
 
-				function goBack()
-					{
-					try
+					// CHECKING THE MOVEMENTS IDLE TIMER IS EQUAL OR GREATER THAN 3 SECONDS
+					if (MOVEMENTS_IDLE >= 3)
 						{
-						// CHECKING IF THE GAME IS RUNNING IN FULLSCREEN
-						if((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height))
-							{
-							// GOING BACK TO WINDOW MODE
-							document.exitFullscreen();
-							}
-
-						// SHOWING THE GUI
-						document.getElementsByClassName("gui_container")[0].style.display = "block";
-
 						// HIDING THE GO BACK BUTTON
 						document.getElementsByClassName("gui_goback")[0].style.display = "none";
 
@@ -245,211 +303,165 @@
 
 						// HIDING THE RELOAD BUTTON
 						document.getElementsByClassName("gui_reload")[0].style.display = "none";
-
-						// UNLOADING THE PLAYSTATION EMULATOR
-						document.getElementById("container").style.display = "none";
-						document.getElementById("container").contentDocument.location.replace("about:blank");
-						}
-						catch(err)
-						{
 						}
 					}
-
-				function goBackButtonResetIncrement()
+					catch(err)
 					{
-					try
+					}
+				}
+
+			function resizeContent()
+				{
+				var w = window.innerWidth;
+				var h = window.innerHeight;
+				if(window.innerHeight > window.innerWidth) // MOBILE DEVICE
+					{
+					document.getElementById("container").style.width = h + "px";
+					document.getElementById("container").style.height = w + "px";
+					}
+					else
+					{
+					document.getElementById("container").style.width = w + "px";
+					document.getElementById("container").style.height = h + "px";
+					}
+				}
+
+			function fullscreenHandler()
+				{
+				try
+					{
+					// CHECKING IF THE GAME IS RUNNING IN FULLSCREEN
+					if((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height))
 						{
-						// CLEARING THE MOVEMENTS IDLE TIMER
-						MOVEMENTS_IDLE = 0;
+						// GOING BACK TO WINDOW MODE
+						document.exitFullscreen();
 
-						// CHECKING IF A GAME IS RUNNING
-						if (document.getElementById("container").style.display=="block")
-							{
-							// SHOWING THE GO BACK BUTTON
-							document.getElementsByClassName("gui_goback")[0].style.display = "block";
-
-							// SHOWING THE FULLSCREEN BUTTON
-							document.getElementsByClassName("gui_fullscreen")[0].style.display = "block";
-
-							// SHOWING THE SOUND TOGGLE BUTTON
-							document.getElementById("gui_sound_handler").style.display = "block";
-
-							// SHOWING THE RELOAD BUTTON
-							document.getElementsByClassName("gui_reload")[0].style.display = "block";
-							}
+						// NO POINT GOING ANY FURTHER
+						return;
 						}
-						catch(err)
+
+					// SETTING THE ELEMENT THAT WILL BE PRESENTED IN FULLSCREEN
+					var elem = document.getElementsByTagName("body")[0];
+
+					// CHECKING IF THERE IS A REQUESTFULLSCREEN
+					if (elem.requestFullscreen)
 						{
+						// REQUESTING FULLSCREEN
+						elem.requestFullscreen();
+						}
+					else if (elem.webkitRequestFullscreen) // SAFARI
+						{
+						// REQUESTING FULLSCREEN
+						elem.webkitRequestFullscreen();
+						}
+					else if (elem.msRequestFullscreen) // IE11
+						{
+						// REQUESTING FULLSCREEN
+						elem.msRequestFullscreen();
 						}
 					}
-
-				function goBackButtonTimerIncrement()
+					catch(err)
 					{
-					try
-						{
-						// UPDATING THE MOVEMENTS IDLE TIMER
-						MOVEMENTS_IDLE = MOVEMENTS_IDLE + 1;
-
-						// CHECKING THE MOVEMENTS IDLE TIMER IS EQUAL OR GREATER THAN 3 SECONDS
-						if (MOVEMENTS_IDLE >= 3)
-							{
-							// HIDING THE GO BACK BUTTON
-							document.getElementsByClassName("gui_goback")[0].style.display = "none";
-
-							// HIDING THE FULLSCREEN BUTTON
-							document.getElementsByClassName("gui_fullscreen")[0].style.display = "none";
-
-							// HIDING THE SOUND TOGGLE BUTTON
-							document.getElementById("gui_sound_handler").style.display = "none";
-
-							// HIDING THE RELOAD BUTTON
-							document.getElementsByClassName("gui_reload")[0].style.display = "none";
-							}
-						}
-						catch(err)
-						{
-						}
 					}
+				}
 
-				function resizeContent()
+			window.addEventListener("load", function()
+				{
+				// CHECKING IF THE PlayStation EMULATOR IS NOT RUNNING WITHIN AN IFRAME
+				if (window.top == window.self)
 					{
-					var w = window.innerWidth;
-					var h = window.innerHeight;
-					if(window.innerHeight > window.innerWidth) // MOBILE DEVICE
+					// RESIZING THE IFRAME
+					resizeContent();
+
+					// CLEARING THE SELECTED FILE VALUE
+					document.getElementById("gui_controls_file").value = null;
+
+					// CLEARING THE PlayStation EMULATOR CONTAINER
+					document.getElementById("container").contentDocument.location.replace("about:blank");
+
+					// CHECKING IF THE SOUND IS ENABLED
+					if (GAME_SOUND_ENABLED==true)
 						{
-						document.getElementById("container").style.width = h + "px";
-						document.getElementById("container").style.height = w + "px";
+						// SHOWING THE ENABLED SOUND ICON
+						document.getElementById("gui_sound_handler").className = "gui_sound_on";
 						}
 						else
 						{
-						document.getElementById("container").style.width = w + "px";
-						document.getElementById("container").style.height = h + "px";
+						// SHOWING THE DISABLED SOUND ICON
+						document.getElementById("gui_sound_handler").className = "gui_sound_off";
 						}
+
+					// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON THE UPLOAD ICON
+					document.getElementsByClassName("gui_upload")[0].addEventListener("click",function(event){document.getElementById("gui_controls_file").click()});
+
+					// CREATING AN INTERVAL TO KEEP FOCUS IN THE CONTAINER
+					setInterval(function()
+						{
+						document.getElementById("container").focus();
+						}, 250);
+
+					// KEEPING TRACK OF MOUSE CLICKS AND MOVEMENTS WHEN PLAYING IN ORDER TO KNOW WHEN TO HIDE/SHOW ALL THE ICONS
+					setInterval(goBackButtonTimerIncrement, 1000);
+
+					// SETTING THE TITLES FOR EACH BUTTON
+					document.getElementsByClassName("gui_upload")[0].title = STRING_SELECTGAME;
+					document.getElementsByClassName("gui_goback")[0].title = STRING_GOBACK;
+					document.getElementsByClassName("gui_fullscreen")[0].title = STRING_FULLSCREEN;
+					document.getElementById("gui_sound_handler").title = STRING_SOUND;
+					document.getElementsByClassName("gui_reload")[0].title = STRING_RELOAD;
+
+					// SETTING FUNCTIONS THAT WILL BE CALLED WHEN THE USER CLICKS, DOUBLE CLICKS OR MOVES THE MOUSE IN ORDER TO SHOW THE SYSTEM ICONS
+					document.addEventListener("click", goBackButtonResetIncrement, false);
+					document.addEventListener("dblclick", goBackButtonResetIncrement, false);
+					document.addEventListener("mousemove", goBackButtonResetIncrement, false);
+
+					// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON A ITEM
+					document.getElementsByClassName("gui_goback")[0].addEventListener("click",function(event){goBack()});
+					document.getElementsByClassName("gui_fullscreen")[0].addEventListener("click",function(event){fullscreenHandler()});
+					document.getElementById("gui_sound_handler").addEventListener("click",function(event){toggleSound()});
+					document.getElementsByClassName("gui_reload")[0].addEventListener("click",function(event){reloadGame()});
 					}
+				});
 
-				function fullscreenHandler()
+			window.addEventListener("resize", function()
+				{
+				// RESIZING THE IFRAME WHEN THE SCREEN SIZE CHANGES
+				resizeContent();
+				});
+
+			var supportsOrientationChange = "onorientationchange" in window, orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+			window.addEventListener(orientationEvent, function()
+				{
+				// RESIZING THE IFRAME WHEN THE SCREEN ORIENTATION CHANGES
+				resizeContent();
+				}, false);
+
+			if ("serviceWorker" in navigator)
+				{
+				navigator.serviceWorker.register("worker.js").then(function(registration)
 					{
-					try
-						{
-						// CHECKING IF THE GAME IS RUNNING IN FULLSCREEN
-						if((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height))
-							{
-							// GOING BACK TO WINDOW MODE
-							document.exitFullscreen();
-
-							// NO POINT GOING ANY FURTHER
-							return;
-							}
-
-						// SETTING THE ELEMENT THAT WILL BE PRESENTED IN FULLSCREEN
-						var elem = document.getElementsByTagName("body")[0];
-
-						// CHECKING IF THERE IS A REQUESTFULLSCREEN
-						if (elem.requestFullscreen)
-							{
-							// REQUESTING FULLSCREEN
-							elem.requestFullscreen();
-							}
-						else if (elem.webkitRequestFullscreen) // SAFARI
-							{
-							// REQUESTING FULLSCREEN
-							elem.webkitRequestFullscreen();
-							}
-						else if (elem.msRequestFullscreen) // IE11
-							{
-							// REQUESTING FULLSCREEN
-							elem.msRequestFullscreen();
-							}
-						}
-						catch(err)
-						{
-						}
-					}
-
-				window.addEventListener("load", function()
+					// Registration successful
+					//console.log("ServiceWorker registration successful with scope: " + registration.scope);
+					}).catch(function(err)
 					{
-					// CHECKING IF THE PlayStation EMULATOR IS NOT RUNNING WITHIN AN IFRAME
-					if (window.top == window.self)
-						{
-						// RESIZING THE IFRAME
-						resizeContent();
-
-						// CLEARING THE SELECTED FILE VALUE
-						document.getElementById("gui_controls_file").value = null;
-
-						// CLEARING THE PlayStation EMULATOR CONTAINER
-						document.getElementById("container").contentDocument.location.replace("about:blank");
-
-						// CHECKING IF THE SOUND IS ENABLED
-						if (GAME_SOUND_ENABLED==true)
-							{
-							// SHOWING THE ENABLED SOUND ICON
-							document.getElementById("gui_sound_handler").className = "gui_sound_on";
-							}
-							else
-							{
-							// SHOWING THE DISABLED SOUND ICON
-							document.getElementById("gui_sound_handler").className = "gui_sound_off";
-							}
-
-						// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON THE UPLOAD ICON
-						document.getElementsByClassName("gui_upload")[0].addEventListener("click",function(event){document.getElementById("gui_controls_file").click()});
-
-						// CREATING AN INTERVAL TO KEEP FOCUS IN THE CONTAINER
-						setInterval(function()
-							{
-							document.getElementById("container").focus();
-							}, 250);
-
-						// KEEPING TRACK OF MOUSE CLICKS AND MOVEMENTS WHEN PLAYING IN ORDER TO KNOW WHEN TO HIDE/SHOW ALL THE ICONS
-						setInterval(goBackButtonTimerIncrement, 1000);
-
-						// SETTING THE TITLES FOR EACH BUTTON
-						document.getElementsByClassName("gui_upload")[0].title = STRING_SELECTGAME;
-						document.getElementsByClassName("gui_goback")[0].title = STRING_GOBACK;
-						document.getElementsByClassName("gui_fullscreen")[0].title = STRING_FULLSCREEN;
-						document.getElementById("gui_sound_handler").title = STRING_SOUND;
-						document.getElementsByClassName("gui_reload")[0].title = STRING_RELOAD;
-
-						// SETTING FUNCTIONS THAT WILL BE CALLED WHEN THE USER CLICKS, DOUBLE CLICKS OR MOVES THE MOUSE IN ORDER TO SHOW THE SYSTEM ICONS
-						document.addEventListener("click", goBackButtonResetIncrement, false);
-						document.addEventListener("dblclick", goBackButtonResetIncrement, false);
-						document.addEventListener("mousemove", goBackButtonResetIncrement, false);
-
-						// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON A ITEM
-						document.getElementsByClassName("gui_goback")[0].addEventListener("click",function(event){goBack()});
-						document.getElementsByClassName("gui_fullscreen")[0].addEventListener("click",function(event){fullscreenHandler()});
-						document.getElementById("gui_sound_handler").addEventListener("click",function(event){toggleSound()});
-						document.getElementsByClassName("gui_reload")[0].addEventListener("click",function(event){reloadGame()});
-						}
+					// Registration failed
+					//console.log("ServiceWorker registration failed: " + err);
 					});
-
-				window.addEventListener("resize", function()
-					{
-					// RESIZING THE IFRAME WHEN THE SCREEN SIZE CHANGES
-					resizeContent();
-					});
-
-				var supportsOrientationChange = "onorientationchange" in window, orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
-				window.addEventListener(orientationEvent, function()
-					{
-					// RESIZING THE IFRAME WHEN THE SCREEN ORIENTATION CHANGES
-					resizeContent();
-					}, false);
-
-				if ("serviceWorker" in navigator)
-					{
-					navigator.serviceWorker.register("worker.js").then(function(registration)
-						{
-						// Registration successful
-						//console.log("ServiceWorker registration successful with scope: " + registration.scope);
-						}).catch(function(err)
-						{
-						// Registration failed
-						//console.log("ServiceWorker registration failed: " + err);
-						});
-					}
-			</script>
+				}
+		</script>
+		<div class="wrapper">
+			<iframe id="container" src="about:blank"></iframe>
+			<div class="gui_goback"></div>
+			<div class="gui_fullscreen"></div>
+			<div class="gui_sound_on" id="gui_sound_handler"></div>
+			<div class="gui_reload"></div>
+			<div class="gui_container">
+				<div class="gui_background"></div>
+				<div class="gui_controls"><span class="gui_controls_key">SELECT = </span>C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">START = </span>V<br><span class="gui_controls_key">L1 = </span>W&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">L2 = </span>E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">R1 = </span>R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key">R2 = </span>T<br><span class="gui_controls_key"><script>document.write(STRING_TRIANGLE);</script> = </span>D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key"><script>document.write(STRING_CIRCLE);</script> = </span>X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key"><script>document.write(STRING_CROSS);</script> = </span>Z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gui_controls_key"><script>document.write(STRING_SQUARE);</script> = </span>S</div>
+				<div class="gui_email"><a href="mailto:info@lrusso.com">info@lrusso.com</a></div>
+				<div class="gui_upload"></div>
+				<input type="file" id="gui_controls_file" class="gui_controls_file" onchange="readFile(event.target.files);">
+			</div>
 		</div>
 	</body>
 </html>
