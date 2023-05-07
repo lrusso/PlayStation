@@ -8,7 +8,7 @@ PlayStation Emulator in JavaScript.
 
 https://lrusso.github.io/PlayStation/PlayStation.htm
 
-## Main differences with N64Wasm:
+## Main differences with WasmPSX:
 
 * Improved UI.
 * File format validation.
