@@ -15,6 +15,7 @@ https://lrusso.github.io/PlayStation/PlayStation.htm
 * The emulation now fills the entire window.
 * File format validation.
 * Improved UI.
+* Internationalization (English and Spanish).
 
 ## Based on the work of:
 
