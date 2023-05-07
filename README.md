@@ -1,6 +1,6 @@
 # PlayStation
 
-PlayStation Emulator in JavaScript.
+PlayStation Emulator in JavaScript and WebAssembly.
 
 ![alt screenshot](https://raw.githubusercontent.com/lrusso/PlayStation/main/PlayStation.png)
 
