@@ -176,8 +176,12 @@
 					// UNLOADING THE PLAYSTATION EMULATOR
 					document.getElementById("container").contentDocument.location.replace("about:blank");
 
-					// STARTING THE PLAYSTATION EMULATOR
-					document.getElementById("container").contentDocument.location.replace("PlayStationGame.htm");
+					// WAITING 500 MS
+					setTimeout(function()
+						{
+						// STARTING THE PLAYSTATION EMULATOR
+						document.getElementById("container").contentDocument.location.replace("PlayStationGame.htm");
+						}, 500);
 					}
 					catch(err)
 					{
