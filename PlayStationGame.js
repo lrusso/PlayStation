@@ -7799,9 +7799,9 @@ run();
 var getFileBlob = function(e, t) {
     var n = new XMLHttpRequest;
     n.open("GET", e),
-    n.responseType = "blob",
+    n.responseType = "arraybuffer",
     n.addEventListener("load", function() {
-        t(n.response)
+        t(new Blob([n.response],{ type: "application/octet-stream" }))
     }),
     n.send()
 };
