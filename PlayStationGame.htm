@@ -23,7 +23,7 @@
 				setTimeout(function()
 					{
 						// READING AND RUNNING THE PLAYSTATION GAME FILE
-						if (parent.getFile().includes("url:")){
+						if (parent.getFile().toString().includes("url:")){
 							loadUrl(parent.getFile().split("url:")[1])
 						} 
 						else {
