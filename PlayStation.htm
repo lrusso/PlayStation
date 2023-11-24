@@ -452,6 +452,10 @@
 					//console.log("ServiceWorker registration failed: " + err);
 					});
 				}
+function loadGame () {
+ SELECTED_FILE = "url:"+document.getElementById("urlBox").value; 
+ runPlayStation();
+}
 		</script>
 		<div class="wrapper">
 			<iframe id="container" src="about:blank"></iframe>
@@ -465,6 +469,8 @@
 				<div class="gui_email"><a href="mailto:info@lrusso.com">info@lrusso.com</a></div>
 				<div class="gui_upload"></div>
 				<input type="file" id="gui_controls_file" class="gui_controls_file" onchange="readFile(event.target.files);">
+				<input type="text" id="urlBox">
+				<button onclick="loadURL()">Load Game</button>
 			</div>
 		</div>
 	</body>
