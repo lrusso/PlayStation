@@ -22,8 +22,13 @@
 				// WAITING 500 MS FOR THE WEBASSEMBLY BUILD TO LOAD
 				setTimeout(function()
 					{
-					// READING AND RUNNING THE PLAYSTATION GAME FILE
-					readFile(parent.getFile());
+						// READING AND RUNNING THE PLAYSTATION GAME FILE
+						if (parent.getFile().includes("url:")){
+							loadUrl(parent.getFile().split("url:")[1])
+						} 
+						else {
+							readFile(parent.getFile());
+						}
 					}, 500);
 				}
 
