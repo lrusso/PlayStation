@@ -7822,6 +7822,14 @@ getFileObject = function(e, t) {
     })
 }
 ,
+loadUrl = function(e) {
+	getFileObject(e, function(e) {
+		console.log(e), pcsx_worker.postMessage({
+			cmd: "loadfile",
+			file: e
+		}), setTimeout("check_controller()", 10), console.log("WASMpsx: Loading URL....")
+	})
+,
 readFile = function(e) {
     pcsx_worker.postMessage({
         cmd: "loadfile",
