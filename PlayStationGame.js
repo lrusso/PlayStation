@@ -7829,6 +7829,7 @@ loadUrl = function(e) {
 			file: e
 		}), setTimeout("check_controller()", 10), console.log("WASMpsx: Loading URL....")
 	})
+}
 ,
 readFile = function(e) {
     pcsx_worker.postMessage({
