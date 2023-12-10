@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Playstation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="Playstation">
+		<meta charset="UTF-8">
+		<style>
+			html,body{padding:0;margin:0}
+			canvas{width:100%;height:100%;position:fixed;left:0;right:0;bottom:0;top:0;z-index:-1}
+			.fileupload_uploader{display:none}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script>
+			// CREATING THE SCRIPT ELEMENT
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.onload = function()
+				{
+				// WAITING 500 MS FOR THE WEBASSEMBLY BUILD TO LOAD
+				setTimeout(function()
+					{
+					// READING AND RUNNING THE PLAYSTATION GAME FILE
+					readFile(parent.getFile());
+					}, 500);
+				}
+
+			// SETTING THE SOURCE OF THE SCRIPT
+			script.src = "PlayStationEmulator.js";
+
+			// ADDING THE SCRIPT TO THE HEAD
+			document.getElementsByTagName("head")[0].appendChild(script);
+
+			window.addEventListener("blur", function()
+				{
+				try
+					{
+					// PAUSING THE EMULATION
+					Emulator_running = false;
+					}
+					catch(err)
+					{
+					}
+				});
+
+			window.addEventListener("focus", function()
+				{
+				try
+					{
+					// RESUMING THE EMULATION
+					Emulator_running = true;
+					}
+					catch(err)
+					{
+					}
+				});
+
+			window.onerror = function (msg, url, lineNo, columnNo, error)
+				{
+				return true;
+				}
+
+			// SETTING FUNCTIONS THAT WILL BE CALLED WHEN THE USER CLICKS, DOUBLE CLICKS OR MOVES THE MOUSE IN ORDER TO SHOW THE SYSTEM ICONS
+			document.addEventListener("click", parent.goBackButtonResetIncrement, false);
+			document.addEventListener("dblclick", parent.goBackButtonResetIncrement, false);
+			document.addEventListener("mousemove", parent.goBackButtonResetIncrement, false);
+		</script>
+	</body>
+</html>

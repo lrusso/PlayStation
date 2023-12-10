@@ -2,11 +2,15 @@ const filesToCache = [
 	"PlayStation.htm",
 	"PlayStation.json",
 	"PlayStation.png",
+	"PlayStationEmulator.htm",
+	"PlayStationEmulator.js",
+	"PlayStationEmulator.wasm",
+	"PlayStationEmulatorWorker.js",
+	"PlayStationEmulatorWorker.wasm",
 	"PlayStationFavIcon_16x16.png",
 	"PlayStationFavIcon_192x192.png",
 	"PlayStationFavIcon_512x512.png",
-	"PlayStationGame.htm",
-	"PlayStationGame.js",
+	"PlayStationMenu.htm",
 	"PlayStationShare.png"
 ];
 
