@@ -3,8 +3,8 @@
 	"short_name": "PlayStation",
 	"lang": "en-US",
 	"start_url": "https://lrusso.github.io/PlayStation/PlayStation.htm",
-	"display": "standalone",
-	"orientation": "landscape",
+	"display": "fullscreen",
+	"orientation": "any",
 	"theme_color": "#000000",
 	"background_color": "#000000",
 	"icons": [
