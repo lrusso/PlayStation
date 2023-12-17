@@ -42,7 +42,6 @@
 
 			var GAME_SOUND_ENABLED = getBooleanSetting("GAME_SOUND_ENABLED");
 
-			var ROMDATA = null;
 			var ROMNAME = null;
 			var MOVEMENTS_IDLE = 0;
 
@@ -129,7 +128,11 @@
 					// CHECKING THE FILE EXTENSION
 					if (extension=="bin")
 						{
+						// GETTING THE SELECTED FILE
 						SELECTED_FILE = files[0];
+
+						// GETTING THE ROM NAME
+						ROMNAME = files[0].name;
 
 						// RUNNING THE PLAYSTATION EMULATOR
 						runPlayStation();
