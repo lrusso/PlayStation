@@ -71,6 +71,10 @@
 					}
 				});
 
+			window.onerror = function (msg, url, lineNo, columnNo, error)
+				{
+				return true;
+				}
 
 			// SETTING FUNCTIONS THAT WILL BE CALLED WHEN THE USER CLICKS, DOUBLE CLICKS OR MOVES THE MOUSE IN ORDER TO SHOW THE SYSTEM ICONS
 			document.addEventListener("click", parent.goBackButtonResetIncrement, false);
